@@ -1,0 +1,891 @@
+/* General Reset and Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Choose one font */
+    background-color: #f8f9fa;          /* Light background */
+    color: #222;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar, nav {
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand, nav .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-brand img, nav .navbar-brand img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link, nav ul li a {
+    color: white !important;
+    margin-left: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover, nav ul li a:hover,
+nav ul li a.active {
+    color: #FFD700 !important; /* Yellow highlight */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+}
+/* MODAL BACKDROP */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* MAIN MODAL BOX */
+.join-box {
+  background: rgba(255,255,255,0.9);
+  padding: 40px 35px;
+  border-radius: 16px;
+  width: 420px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  animation: popup 0.3s ease;
+}
+
+@keyframes popup {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* CLOSE BUTTON */
+.join-close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #444;
+}
+.join-close:hover {
+  color: #000;
+}
+
+/* TITLE */
+.join-box h2 {
+  margin-bottom: 25px;
+  font-weight: 800;
+  color: #222;
+}
+
+/* INPUT FIELDS */
+.join-box input[type="text"],
+.join-box input[type="email"],
+.join-box input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 18px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.join-box input:focus {
+  border-color: #ffb300;
+  box-shadow: 0 0 6px rgba(255,179,0,0.4);
+}
+
+/* PASSWORD FIELD WRAP */
+.password-wrapper {
+  position: relative;
+}
+
+#togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* CREATE BUTTON */
+.create-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #ffb300, #ff8800);
+  padding: 12px;
+  border: none;
+  color: white;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.create-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(45deg, #ff9900, #ff6d00);
+  box-shadow: 0px 4px 10px rgba(255,136,0,0.4);
+}
+
+/* SKILLS DROPDOWN */
+.skill-box {
+  margin-top: 12px;
+}
+
+.skill-box label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.skill-box select {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 14px;
+  outline: none;
+}
+
+.skill-box select:focus {
+  border-color: #ffb300;
+}
+
+
+
+/* SUCCESS POPUP */
+.success-popup {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffcc33;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  animation: popup 0.4s ease;
+}
+
+
+/* Buttons */
+.btn-warning, .btn-yellow, .btn-join {
+    background-color: #FFD700;
+    border: none;
+    border-radius: 8px;
+    color: #111;
+    font-weight: 600;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-warning:hover, .btn-yellow:hover, .btn-join:hover {
+    background-color: #e6c200;
+    transform: scale(1.05);
+}
+
+.course-card {
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.modal-body {
+  padding: 0;
+}
+#videoFrame {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to bottom right, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                url('bg.jpg') no-repeat center center/cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.brand {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.tagline {
+    font-size: 2rem;
+    font-style: italic;
+    color: #FFD700;
+}
+
+.search-bar input {
+    border-radius: 70px;
+    border: none;
+    padding: 20px 30px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+/* Stats */
+.stats div {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFD700;
+}
+
+/* Sections */
+.section-title, h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #111;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    padding: 25px;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    background: #fff8dc; /* light golden */
+}
+
+.card h4 {
+    color: #111;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Emoji bounce animation on card hover */
+.card:hover h4 {
+    animation: bounce 0.4s ease-in-out;
+}
+
+/* Skill Cards (Pastel themed) */
+.skill-card {
+    background: #fff;
+    border: 2px solid #ffe4ec;
+    transition: all 0.4s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: #fff0f5;
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+}
+
+/* CTA Section */
+.cta {
+    background: #111;
+    color: rgb(87, 70, 70);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    color: #FFD700;
+}
+
+.cta p {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background-color: #c4adad;
+    color: rgb(18, 17, 17);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+
+
+
+/* Enroll Button inside Modal */
+.btn-enroll {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: #f5c518;
+    color: #111;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-enroll:hover {
+    background: #ffd700;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Learn Page Filter Buttons */
+.filter-btn {
+  background: #fff8dc;
+  border: 2px solid #FFD700;
+  color: #111;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #FFD700;
+  color: #111;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #FFD700;
+}
+
+/* =========================================================
+   SKILLBEE LEARN PAGE – NAUKRI STYLE UPDATE
+   ========================================================= */
+
+/* Learn Page Wrapper */
+.learn-page {
+  background-color: #f9f9fb;
+  padding-bottom: 60px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hero Section - Improved spacing */
+.hero {
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+              url('bg.jpg') no-repeat center center/cover;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  animation: fadeIn 1.5s ease-in-out;
+  gap: 20px;  /* Increased gap between the title, subtitle, and search bar */
+}
+
+/* Search Bar - Spacing between inputs */
+.learn-search {
+  display: flex;
+  justify-content: center;
+  gap: 20px;  /* Adds space between the inputs */
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+/* Individual Search Input & Button */
+.learn-search input,
+.learn-search select,
+.learn-search button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #FFD700;
+}
+
+/* Style for Search Button */
+.learn-search button {
+  background-color: #FFD700;
+  color: #111;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.learn-search button:hover {
+  background-color: #e6c200;
+  transform: scale(1.05);
+}
+
+/* Add space between AI Banner and Course Categories */
+.ai-banner {
+  margin-top: 30px;
+}
+
+/* Course Category Title Spacing */
+h3.mb-4.fw-semibold {
+  margin-bottom: 40px; /* Adds space between title and categories */
+}
+
+/* Explore by Category - Enhanced Box Styling */
+.category-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 220px;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #FFD700, #FF6347); /* Gradient background on hover */
+  color: white;
+}
+
+.category-card h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+.category-card i {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #FFD700;
+}
+
+.category-card span {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #FFD700;
+}
+
+.category-card:hover span {
+  color: #fff;
+}
+
+/* Add a gap between each category card */
+.d-flex {
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* Footer - Add padding to make the footer more prominent */
+footer {
+  padding: 30px 0;
+  margin-top: 60px;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+}
+
+
+/* Enroll Button */
+.learn-card button {
+  background: #FFD700;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.learn-card button:hover {
+  background: #e6c200;
+}
+
+/* Popup modal styles */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.join-close {
+  position: absolute;
+  top: 10px; right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+}
+/*learn*/
+/* Category Filter Buttons */
+.filter-btn {
+  background: #fff8dc;
+  border: 2px solid #FFD700;
+  color: #111;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #FFD700;
+  color: #111;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #FFD700;
+}
+
+/* =========================================================
+    === teach PAGE STYLES === 
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  background-color: #111;
+  color: white;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left img {
+  margin-right: 10px;
+}
+
+.navbar-left span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #FFD700;
+}
+
+/* Background Section */
+.bg-container {
+  position: relative;
+  height: 100vh;
+  background: url('people-talking.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Upload Form */
+.upload-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 0.9rem;
+}
+
+.upload-form input[type="text"],
+.upload-form textarea,
+.upload-form input[type="file"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.upload-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.upload-form button {
+  padding: 0.8rem 1.5rem;
+  background-color: #FFD700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.upload-form button:hover {
+  background-color: #ffc107;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* CHATBOT BUTTON */
+#chatbot-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: #ffca28;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+/* CHATBOT WINDOW */
+#chatbot-box {
+    position: fixed;
+    bottom: 95px;
+    right: 25px;
+    width: 320px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.user-upload-panel {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  width: 350px;
+  max-height: 75vh;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  padding: 15px;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+
+/* CHAT HEADER */
+.chat-header {
+    background: #ffca28;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+/* CHAT BODY */
+.chat-body {
+    padding: 10px;
+    height: 280px;
+    overflow-y: auto;
+    background: #f7f7f7;
+}
+
+.bot-msg, .user-msg {
+    margin: 8px 0;
+    padding: 10px;
+    max-width: 80%;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.bot-msg {
+    background: #e0e0e0;
+    align-self: flex-start;
+}
+
+.user-msg {
+    background: #ffecb3;
+    align-self: flex-end;
+}
+
+/* INPUT AREA */
+.chat-input-area {
+    display: flex;
+    border-top: 2px solid #ddd;
+}
+
+#chat-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+#chat-send {
+    background: #ffca28;
+    border: none;
+    padding: 0 18px;
+    font-size: 18px;
+    cursor: pointer;
+}
+

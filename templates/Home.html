@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBee - Learn New Skills</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="home.html">
+      <img src="{{ url_for('static', filename='skillbee-logo.png') }}">
+
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <a class="nav-link" href="{{ url_for('Home') }}">Home</a>
+        <li class="nav-item"><a class="nav-link" href="learn">Learn</a></li>
+        <li class="nav-item"><a class="nav-link" href="teach">Teach</a></li>
+
+        <li class="nav-item">
+         <button id="openJoinBtn" class="btn btn-warning">Join Now</button>
+        </li>
+        <li class="nav-item">
+  <button id="openLoginBtn" class="btn btn-outline-light">Login</button>
+</li>
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+
+<!-- Join Modal -->
+<div id="joinModal" class="modal">
+  <div class="join-box">
+
+    <span class="close join-close">&times;</span>
+
+    <h2>Join SkillBee</h2>
+
+    <form id="joinForm">
+
+      <input type="text" name="full_name" id="full_name" placeholder="Full Name" required>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+
+      <div class="password-wrapper">
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <span id="togglePassword">👁</span>
+      </div>
+
+      <div class="skill-box">
+        <label>Select Skills:</label>
+        <select name="enrolled_skills" id="enrolled_skills" multiple>
+          <option value="Programming">Programming</option>
+          <option value="UI/UX Design">UI/UX Design</option>
+          <option value="Web Development">Web Development</option>
+        </select>
+      </div>
+
+      <button type="submit" class="create-btn">Create Account</button>
+
+    </form>
+
+  </div>
+</div>
+
+<div id="successPopup" class="success-popup">
+  🎉 Welcome to SkillBee!
+</div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="join-box">
+    <span class="close login-close">&times;</span>
+    <h2>Login to SkillBee</h2>
+    <form id="loginForm">
+      <input type="email" name="email" id="login_email" placeholder="Email" required>
+      <input type="password" name="password" id="login_password" placeholder="Password" required>
+      <button type="submit" class="create-btn">Login</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="success-popup">
+  <h2>🎉 Welcome to SkillBee!</h2>
+</div>
+
+
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+        <h1 class="brand d-flex align-items-center justify-content-center">
+          <img src="">
+           SkillBee
+        </h1>
+        <p class="tagline">Where Skills Buzz Together</p>
+
+        <!-- Search Bar -->
+<div class="search-bar mt-4 position-relative" style="max-width: 600px; margin: auto;">
+  <input id="searchInput" type="text" placeholder="What do you want to learn? 🔍"
+         class="form-control form-control-lg" autocomplete="off">
+  <ul id="suggestionList" class="list-group position-absolute w-100 mt-1"
+      style="z-index: 9999; display: none; max-height: 200px; overflow-y: auto;"></ul>
+</div>
+
+      
+        <!-- Stats -->
+        <div class="stats mt-4 d-flex justify-content-center gap-4">
+          <div>👩‍🎓 10K+ Learners</div>
+          <div>📚 500+ Tutorials</div>
+          <div>💡 200+ Skills Shared</div>
+        </div>
+      
+        <!-- Explore Button -->
+        <a href="#" class="btn btn-warning mt-4">Explore Services</a>
+      </section>
+
+  <!-- Featured Skills Section (Pastel Animated) -->
+<section class="container py-5 text-center">
+  <h2 class="text-center mb-5">✨ Featured Skills</h2>
+  <div class="row g-4">
+
+    <!-- Programming -->
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>💻 Programming</h4>
+        <p>C, C++, Java, Python</p>
+        <a href="/courses/programming" class="btn btn-pastel mt-2">Explore</a>
+      </div>
+    </div>
+
+    <!-- UI/UX -->
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>🎨 UI / UX Design</h4>
+        <p>Figma, Adobe XD, Prototyping</p>
+        <a href="/courses/uiux" class="btn btn-pastel mt-2">Explore</a>
+      </div>
+    </div>
+
+    <!-- Web Development -->
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>🖥️ Web Development</h4>
+        <p>HTML, CSS, Bootstrap, JavaScript</p>
+        <a href="/courses/webdev" class="btn btn-pastel mt-2">Explore</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popular Tutorials Section -->
+<section class="container py-5 text-center">
+  <h2 class="text-center mb-5">🎬 Popular Tutorials</h2>
+  <div class="row g-4">
+    <!-- JavaScript Tutorial -->
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+      <h4>🔥 JavaScript Essentials</h4>
+      <p>Master the DOM, ES6, and real-world JS projects.</p>
+      <button class="btn btn-pastel mt-2" data-bs-toggle="modal" data-bs-target="#videoModal" data-title="JavaScript Essentials" data-description="Learn about DOM manipulation, modern ES6 features, and practical JS usage." data-video="https://www.youtube.com/embed/hdI2bqOjy3c">Watch Now</button>
+      </div>
+    </div>
+
+    <!-- Python Tutorial -->
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>💡 Python for Beginners</h4>
+        <p>Learn Python basics, data structures, and logic.</p>
+        <button class="btn btn-pastel mt-2" data-bs-toggle="modal" data-bs-target="#videoModal" data-title="Python for Beginners" data-description="Get started with Python fundamentals, loops, and functions." data-video="https://www.youtube.com/embed/rfscVS0vtbw">Watch Now</button>
+      </div>
+    </div>
+
+    <!-- Web Design Tutorial -->
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>🚀 Web Design Crash Course</h2>
+        <p>Build responsive websites using HTML, CSS, and Bootstrap.</p>
+        <button class="btn btn-pastel mt-2" data-bs-toggle="modal" data-bs-target="#videoModal" data-title="Web Design Crash Course" data-description="A complete crash course to design and code beautiful responsive sites." data-video="https://www.youtube.com/embed/UB1O30fRSGg">Watch Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Vedio model -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel">Video Tutorial</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe id="videoFrame" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Why Choose SkillBee Section -->
+<section class="container py-5 text-center">
+  <h2 class="text-center mb-5">💡 Why Choose SkillBee?</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>🚀 Learn by Doing</h4>
+        <p>Every course comes with hands-on challenges and projects.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>🎓 Expert Mentors</h4>
+        <p>Courses designed by top professionals from the industry.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card skill-card p-4">
+        <h4>⭐ Lifetime Access</h4>
+        <p>Keep learning at your own pace with lifetime course access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Testimonials -->
+  <section class="testimonials py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="section-title">What Learners Say</h2>
+      <div class="row mt-4">
+        <div class="col-md-4"><div class="card p-4">"Amazing platform!" - Riya</div></div>
+        <div class="col-md-4"><div class="card p-4">"Helped me get a job!" - Arjun</div></div>
+        <div class="col-md-4"><div class="card p-4">"Easy to learn." - Neha</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta py-5">
+    <div class="container text-center">
+      <h2>🚀 Ready to Upgrade Your Skills?</h2>
+      <p>Join 10K+ learners on SkillBee today.</p>
+      <a href="#" class="btn btn-warning btn-lg">Join Now</a>
+    </div>
+  </section>
+
+<!-- Skill Info Modal -->
+<div class="modal" id="skillModal">
+  <div class="modal-content text-center">
+    <span class="close">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <button id="modalEnrollBtn" class="btn btn-pastel">Enroll Now</button>
+  </div>
+</div>
+
+<!-- Floating Chatbot Button -->
+<div id="chatbot-btn">💬</div>
+
+<!-- Chatbot Box -->
+<div id="chatbot-box">
+    <div class="chat-header">
+        SkillBee Chatbot 🤖
+        <span id="chat-close">×</span>
+    </div>
+
+    <div class="chat-body" id="chat-body">
+        <div class="bot-msg">Hello! How can I help you today? 😊</div>
+    </div>
+
+    <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type your message...">
+        <button id="chat-send">➤</button>
+    </div>
+</div>
+
+
+  <!-- JavaScript -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  <!-- Hidden Admin Access -->
+  <a href="admin.html" style="display:none;" id="admin-link">Admin</a>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      // Press Ctrl + Shift + A to open admin login
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        let pass = prompt("Enter Admin Password:");
+        if (pass === "Guruji0725") {
+          sessionStorage.setItem("adminAccess", "true");
+          window.location.href = "admin.html";
+        } else {
+          alert("Access Denied ❌");
+        }
+      }
+    });
+  </script>
+  
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+const searchInput = document.getElementById("searchInput");
+const suggestionList = document.getElementById("suggestionList");
+
+// ---- Fetch Suggestions on Typing ----
+searchInput.addEventListener("keyup", async () => {
+    const query = searchInput.value.trim();
+
+    if (query.length < 1) {
+        suggestionList.style.display = "none";
+        return;
+    }
+
+    // Call Flask search API
+    const response = await fetch(`/api/search?q=${query}`);
+    const results = await response.json();
+
+    suggestionList.innerHTML = ""; // Clear old suggestions
+
+    if (results.length === 0) {
+        suggestionList.innerHTML = `<li class="list-group-item">No results found</li>`;
+        suggestionList.style.display = "block";
+        return;
+    }
+
+    // Add new suggestions
+    results.forEach(item => {
+        const li = document.createElement("li");
+        li.classList.add("list-group-item");
+        li.style.cursor = "pointer";
+        li.innerHTML = `
+            <strong>${item.type === 'skill' ? '🧰 Skill' : '🎥 Tutorial'}:</strong> 
+            ${item.type === 'skill' ? item.name : item.title}
+        `;
+
+        // When clicking a suggestion → open details page
+        li.addEventListener("click", () => {
+            if (item.type === "skill") {
+                window.location.href = `/skill/${item.id}`;
+            } else {
+                window.location.href = `/tutorial/${item.id}`;
+            }
+        });
+
+        suggestionList.appendChild(li);
+    });
+
+    suggestionList.style.display = "block";
+});
+
+// ---- Hide suggestions when clicking outside ----
+document.addEventListener("click", (event) => {
+    if (!event.target.closest(".search-bar")) {
+        suggestionList.style.display = "none";
+    }
+});
+</script>
+<script>
+// Open Modal
+document.getElementById("openJoinBtn").onclick = () => {
+    document.getElementById("joinModal").style.display = "flex";
+};
+
+// Close Modal
+document.querySelector(".join-close").onclick = () => {
+    document.getElementById("joinModal").style.display = "none";
+};
+
+// Show / Hide Password
+document.getElementById("togglePassword").onclick = function () {
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+};
+
+// Submit JOIN Form (AJAX)
+document.getElementById("joinForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append("full_name", document.getElementById("full_name").value);
+    data.append("email", document.getElementById("email").value);
+    data.append("password", document.getElementById("password").value);
+
+    let res = await fetch("/join", {
+        method: "POST",
+        body: data
+    });
+
+    let result = await res.json();
+
+    if (result.success) {
+        showSuccess();
+        document.getElementById("joinForm").reset();
+        document.getElementById("joinModal").style.display = "none";
+    } else {
+        alert(result.message);
+    }
+});
+
+// Show Success Popup
+function showSuccess() {
+    let popup = document.getElementById("successPopup");
+    popup.style.display = "block";
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 2000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const videoModal = document.getElementById("videoModal");
+  const videoFrame = document.getElementById("videoFrame");
+
+  // jab modal open ho
+  videoModal.addEventListener("show.bs.modal", function (event) {
+    let button = event.relatedTarget;
+
+    let videoURL = button.getAttribute("data-video");
+
+    // iframe me URL set karein
+    videoFrame.src = videoURL;
+  });
+
+  // jab modal close ho → video stop
+  videoModal.addEventListener("hidden.bs.modal", function () {
+    videoFrame.src = "";
+  });
+});
+
+// Open / Close Chatbox
+document.getElementById("chatbot-btn").onclick = () => {
+    document.getElementById("chatbot-box").style.display = "flex";
+};
+
+document.getElementById("chat-close").onclick = () => {
+    document.getElementById("chatbot-box").style.display = "none";
+};
+
+// Send message
+document.getElementById("chat-send").onclick = sendMessage;
+document.getElementById("chat-input").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+});
+
+function sendMessage() {
+    let input = document.getElementById("chat-input");
+    let text = input.value.trim();
+    if (text === "") return;
+
+    let chatBody = document.getElementById("chat-body");
+
+    // User message
+    chatBody.innerHTML += `<div class="user-msg">${text}</div>`;
+
+    input.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Bot reply (basic)
+    setTimeout(() => {
+        let reply = botReply(text);
+        chatBody.innerHTML += `<div class="bot-msg">${reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }, 600);
+}
+
+// Simple AI replies
+function botReply(msg) {
+    msg = msg.toLowerCase();
+
+    if (msg.includes("hello") || msg.includes("hi")) return "Hello! 😊 How can I help you?";
+    if (msg.includes("python")) return "Python is great! You can learn it in our Python Course. 🐍";
+    if (msg.includes("course")) return "We offer Programming, UI/UX, and Web Development courses!";
+    if (msg.includes("skill")) return "Many skills available! What do you like to learn?";
+    
+    return "I didn't fully understand, but I'm here to help! 😊";
+}
+
+// Open Login Modal
+document.getElementById("openLoginBtn").onclick = () => {
+    document.getElementById("loginModal").style.display = "flex";
+};
+
+// Close Login Modal
+document.querySelector(".login-close").onclick = () => {
+    document.getElementById("loginModal").style.display = "none";
+};
+
+// Submit Login Form (AJAX)
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append("email", document.getElementById("login_email").value);
+    data.append("password", document.getElementById("login_password").value);
+
+    let res = await fetch("/login", {
+        method: "POST",
+        body: data
+    });
+
+    let result = await res.json();
+
+    if (result.success) {
+        alert("Login successful!");
+        document.getElementById("loginForm").reset();
+        document.getElementById("loginModal").style.display = "none";
+        // Redirect after login (optional)
+        window.location.href = "/learn";
+    } else {
+        alert(result.message);
+    }
+});
+
+
+
+</script>
+
+
+
+
+
+<!-- footer -->
+  <footer class="text-center py-4">
+    <h1>🌸 Vidhi & Himanshu</h1>
+    <p class="lead mb-0">Creative Developer & Designer</p>
+    <p class="mb-0">© 2025 Vidhi Gupta & Himanshu. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
+

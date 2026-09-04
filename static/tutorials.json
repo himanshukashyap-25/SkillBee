@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Web Development Bootcamp",
+    "description": "Learn full-stack development from scratch!",
+    "icon": "💻",
+    "videoPath": "uploads/webdev.mp4"
+  },
+  {
+    "title": "Data Science Fundamentals",
+    "description": "Master Python, Pandas, and data visualization.",
+    "icon": "📊",
+    "videoPath": "uploads/datasci.mp4"
+  }
+]
